@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Đơn Giản</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white p-8 rounded-2xl shadow-lg max-w-lg w-full text-center space-y-6">
+        <h1 id="mainTitle" class="text-4xl font-bold text-gray-800 transition-colors duration-500">Chào mừng bạn đến với trang web!</h1>
+        
+        <p id="mainText" class="text-gray-600 text-lg transition-opacity duration-500">
+            Đây là một ví dụ đơn giản về một trang web một trang, được xây dựng với HTML, CSS và JavaScript.
+        </p>
+        
+        <button id="changeContentBtn" class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition-colors duration-300 transform hover:scale-105 shadow-md">
+            Nhấn vào đây!
+        </button>
+    </div>
+
+    <script>
+        // Lấy các phần tử DOM
+        const changeContentBtn = document.getElementById('changeContentBtn');
+        const mainTitle = document.getElementById('mainTitle');
+        const mainText = document.getElementById('mainText');
+
+        // Định nghĩa các nội dung khác nhau
+        const contents = [
+            {
+                title: "Thật tuyệt vời!",
+                text: "Bạn đã tương tác thành công với trang web. JavaScript đã hoạt động!"
+            },
+            {
+                title: "Bạn có thể thay đổi bất cứ điều gì!",
+                text: "Thử thay đổi màu sắc, phông chữ hoặc thêm các hiệu ứng động khác trong code nhé."
+            },
+            {
+                title: "Khám phá thêm!",
+                text: "Bạn có thể sử dụng các thư viện khác như Tailwind CSS để tạo giao diện đẹp hơn nữa."
+            },
+            {
+                title: "Một lần nữa, chào mừng bạn!",
+                text: "Quay lại nội dung ban đầu. Chúc bạn một ngày tốt lành!"
+            }
+        ];
+
+        // Biến để theo dõi trạng thái hiện tại
+        let currentIndex = 0;
+
+        // Thêm sự kiện click cho nút
+        changeContentBtn.addEventListener('click', () => {
+            // Tăng chỉ số và quay lại 0 nếu đã đến cuối
+            currentIndex = (currentIndex + 1) % contents.length;
+            
+            // Cập nhật nội dung của tiêu đề và đoạn văn bản
+            mainTitle.textContent = contents[currentIndex].title;
+            mainText.textContent = contents[currentIndex].text;
+
+            // Thêm hiệu ứng động đơn giản
+            mainTitle.classList.add('animate-pulse');
+            setTimeout(() => {
+                mainTitle.classList.remove('animate-pulse');
+            }, 500); // Loại bỏ hiệu ứng sau 0.5 giây
+        });
+    </script>
+</body>
+</html>
